@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
+  selector: 'default-layout-content',
   imports: [RouterOutlet],
-  template: ` <router-outlet /> `,
+  templateUrl: './content.component.html',
 })
-export class AppComponent {
-  title = 'Angular-101-TheComeBack';
-}
+export class ContentComponent {}
