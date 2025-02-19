@@ -3,3 +3,18 @@
   <sauna-card />
   }
 </section>
+
+<ng-template #modalTemplate>
+  <div class="m-8 my-20 max-w-[400px] mx-auto">
+    <div class="mb-8">
+      <h1 class="mb-4 text-3xl font-extrabold">Turn on notifications</h1>
+      <p class="text-gray-600">Get the most out of Twitter by staying up to date with what's happening.</p>
+    </div>
+    <div class="space-y-4">
+      <button class="p-3 bg-black rounded-full text-white w-full font-semibold">Allow notifications</button>
+      <button class="p-3 bg-white border rounded-full w-full font-semibold">Skip for now</button>
+    </div>
+  </div>
+</ng-template>
+
+<modal [contentTemplate]="modalTemplate" />
