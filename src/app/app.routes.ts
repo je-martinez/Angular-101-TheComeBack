@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
-import { HomePage } from './pages/home/home.page';
-import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
-
+import { HomePage } from '@modules/home/pages';
+import { DefaultLayoutComponent } from '@modules/ui/layouts';
 export const routes: Routes = [
   {
     path: '',
