@@ -1,8 +1,8 @@
 <div class="flex items-center justify-center gap-1">
   <div class="flex items-center justify-center h-6">
-    <span class="text-sm font-semibold">{{ rating }}</span>
+    <span class="text-base font-semibold">{{ rating }}</span>
   </div>
-  <div class="flex items-center h-4">
+  <div class="flex h-5.5">
     <div class="relative">
       @for (star of getStars(); track star) {
       <ng-icon name="heroStar" />
@@ -11,7 +11,7 @@
     @for (star of getHalfStars(); track star) {
     <div class="relative">
       <ng-icon name="heroStar" />
-      <div class="w-2 h-full bg-white absolute top-0 left-2"></div>
+      <div class="w-2 h-8 bg-white absolute top-0 left-2"></div>
     </div>
     }
   </div>
