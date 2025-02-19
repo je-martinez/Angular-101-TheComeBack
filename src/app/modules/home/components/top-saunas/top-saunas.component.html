@@ -1,8 +1,15 @@
-<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-  @for(sauna of [1,2,3,4,5]; track sauna) {
-  <sauna-card [sauna]="sauna" (saunaClick)="onSaunaClick($event)" />
-  }
+<section class="flex flex-col">
+  <section class="expandable-content">
+    @for(sauna of saunas; track sauna.id) {
+    <div class="expandable-content__item">
+      <sauna-card class="expandable-content__item" [sauna]="sauna" (saunaClick)="onSaunaClick($event)" />
+    </div>
+
+    }
+  </section>
 </section>
+
+
 
 <ng-template #modalTemplate>
   <section class="relative">
@@ -18,8 +25,6 @@
     </div>
   </section>
 </ng-template>
-
-<p>{{isModalOpen()}}</p>
 
 @if(isModalOpen()) {
 <modal [contentTemplate]="modalTemplate" [isOpen]="isModalOpen()" (onCloseModalEvent)="closeModal()" />
