@@ -8,4 +8,7 @@
     </div>
     <p class="text-sm text-gray-600 text-center">0 Reviews</p>
   </div>
+  <div [@expandCollapse]="isActive() ? 'expanded' : 'collapsed'">
+    <sauna-details [isVisible]="isActive()" />
+  </div>
 </div>

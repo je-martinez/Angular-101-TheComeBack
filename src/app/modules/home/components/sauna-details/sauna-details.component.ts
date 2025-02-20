@@ -1,25 +1,19 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { NgIf } from '@angular/common';
 import { Component, input, signal } from '@angular/core';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { heroCheckCircle } from '@ng-icons/heroicons/outline';
 
 @Component({
   selector: 'sauna-details',
-  imports: [NgIf],
+  imports: [NgIf, NgIcon],
+  providers: [provideIcons({ heroCheckCircle })],
   templateUrl: './sauna-details.component.html',
   animations: [
-    trigger('slideUp', [
-      transition(':enter', [
-        style({ transform: 'translateY(100%)', opacity: 0 }),
-        animate(
-          '500ms ease-out',
-          style({ transform: 'translateY(0)', opacity: 1 })
-        ),
-      ]),
-      transition(':leave', [
-        animate(
-          '0ms ease-in',
-          style({ transform: 'translateY(100%)', opacity: 0 })
-        ),
+    trigger('fade', [
+      transition('void => *', [
+        style({ opacity: 0 }),
+        animate(5000, style({ opacity: 1 })),
       ]),
     ]),
   ],

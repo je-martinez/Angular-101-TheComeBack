@@ -1,8 +1,6 @@
 import { Component, signal } from '@angular/core';
-import { SaunaCardComponent } from '../sauna-card/sauna-card.component';
 import { ModalComponent } from '@/modules/ui/components';
-import { Sauna } from '@/types';
-import { SaunaDetailsComponent } from '../sauna-details/sauna-details.component';
+import { SaunaCardComponent } from '../sauna-card/sauna-card.component';
 
 const mockData: any[] = [
   {
@@ -34,7 +32,7 @@ const mockData: any[] = [
 
 @Component({
   selector: 'top-saunas',
-  imports: [SaunaCardComponent, ModalComponent, SaunaDetailsComponent],
+  imports: [SaunaCardComponent, ModalComponent],
   templateUrl: './top-saunas.component.html',
 })
 export class TopSaunasComponent {
