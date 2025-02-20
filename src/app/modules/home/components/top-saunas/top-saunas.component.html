@@ -1,8 +1,8 @@
 <section class="flex flex-col md:flex-row min-h-156">
   <section class="expandable-content">
-    @for(sauna of saunas; track sauna.id) {
+    @for(sauna of saunas(); track sauna.id) {
     <div class="expandable-content__item" (mouseenter)="onSaunaHover(sauna)" (mouseleave)="onSaunaLeave()">
-      <div class="w-full max-w-128 p-4">
+      <div class="w-full min-w-82 p-4">
         <sauna-card [sauna]="sauna" (saunaClick)="onSaunaClick($event)" [isActive]="activeSauna() === sauna.id" />
       </div>
     </div>

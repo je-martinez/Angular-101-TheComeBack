@@ -1,43 +1,35 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { ModalComponent } from '@/modules/ui/components';
 import { SaunaCardComponent } from '../sauna-card/sauna-card.component';
-
-const mockData: any[] = [
-  {
-    id: 1,
-    name: 'Sauna 1',
-    image: 'https://picsum.photos/200/300',
-  },
-  {
-    id: 2,
-    name: 'Sauna 2',
-    image: 'https://picsum.photos/200/300',
-  },
-  {
-    id: 3,
-    name: 'Sauna 3',
-    image: 'https://picsum.photos/200/300',
-  },
-  {
-    id: 4,
-    name: 'Sauna 4',
-    image: 'https://picsum.photos/200/300',
-  },
-  {
-    id: 5,
-    name: 'Sauna 5',
-    image: 'https://picsum.photos/200/300',
-  },
-];
+import { DatabaseService } from '@/data';
+import { Sauna } from '@/types';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'top-saunas',
   imports: [SaunaCardComponent, ModalComponent],
   templateUrl: './top-saunas.component.html',
 })
-export class TopSaunasComponent {
+export class TopSaunasComponent implements OnInit, OnDestroy {
   public readonly isModalOpen = signal(false);
-  public readonly activeSauna = signal<number | null>(null);
+  public readonly activeSauna = signal<string | null>(null);
+  private readonly databaseService = inject(DatabaseService);
+  public readonly saunas = signal<Sauna[]>([]);
+  private readonly $unsubscribe = new Subject<void>();
+
+  ngOnInit(): void {
+    this.databaseService
+      .getSaunas()
+      .pipe(takeUntil(this.$unsubscribe))
+      .subscribe((saunas) => {
+        this.saunas.set(saunas);
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.$unsubscribe.next();
+    this.$unsubscribe.complete();
+  }
 
   public openModal() {
     this.isModalOpen.set(true);
@@ -48,11 +40,7 @@ export class TopSaunasComponent {
     this.isModalOpen.set(false);
   }
 
-  public get saunas() {
-    return mockData;
-  }
-
-  public onSaunaHover(sauna: any) {
+  public onSaunaHover(sauna: Sauna) {
     this.activeSauna.set(sauna.id);
   }
 

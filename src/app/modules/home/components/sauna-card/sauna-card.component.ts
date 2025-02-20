@@ -27,7 +27,7 @@ import {
   ],
 })
 export class SaunaCardComponent {
-  sauna = input<Sauna>();
+  sauna = input.required<Sauna>();
   saunaClick = output<Sauna>();
   isActive = input.required<boolean>();
 

@@ -21,7 +21,8 @@
     "paths": {
       "@/*": ["./src/app/*"],
       "@modules/*": ["./src/app/modules/*"],
-      "@types/*": ["./src/app/types/*"]
+      "@types/*": ["./src/app/types/*"],
+      "@data/*": ["./src/app/data/*"]
     }
   },
   "angularCompilerOptions": {
