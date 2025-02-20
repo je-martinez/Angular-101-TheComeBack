@@ -1,12 +1,4 @@
-$prefix: expandable;
-
-.#{$prefix}-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 32rem;
-  width: 100%;
-}
+$prefix: "expandable";
 
 @mixin expandable-item {
   flex-grow: 1;
@@ -28,10 +20,14 @@ $prefix: expandable;
   }
 }
 
-.#{$prefix}-item {
-  @include expandable-item;
-}
+.expandable-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32rem;
+  width: 100%;
 
-.#{$prefix}-item-active {
-  @include expandable-item;
+  &__item {
+    @include expandable-item;
+  }
 }

@@ -6,8 +6,8 @@
         <ng-icon name="heroXMarkSolid" size="24" />
       </button>
       <div class="w-full">
-        @if(contentTemplate) {
-        <ng-template [ngTemplateOutlet]="contentTemplate" />
+        @if(contentTemplate()) {
+        <ng-template [ngTemplateOutlet]="contentTemplate()!" />
         }
       </div>
     </div>

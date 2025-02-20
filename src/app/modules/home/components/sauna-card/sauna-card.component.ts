@@ -10,6 +10,7 @@ import { Component, input, output } from '@angular/core';
 export class SaunaCardComponent {
   sauna = input<Sauna>();
   saunaClick = output<Sauna>();
+  isActive = input.required<boolean>();
 
   public onSaunaClick() {
     const sauna = this.sauna();

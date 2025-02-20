@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { SaunaCardComponent } from '../sauna-card/sauna-card.component';
 import { ModalComponent } from '@/modules/ui/components';
+import { Sauna } from '@/types';
 import { SaunaDetailsComponent } from '../sauna-details/sauna-details.component';
 
-const mockData = [
+const mockData: any[] = [
   {
     id: 1,
     name: 'Sauna 1',
@@ -38,7 +39,7 @@ const mockData = [
 })
 export class TopSaunasComponent {
   public readonly isModalOpen = signal(false);
-  public readonly activeSauna = signal<any>(null);
+  public readonly activeSauna = signal<number | null>(null);
 
   public openModal() {
     this.isModalOpen.set(true);
@@ -50,13 +51,15 @@ export class TopSaunasComponent {
   }
 
   public get saunas() {
-    // //Make chunks of 3
-    // const chunks = [];
-    // for (let i = 0; i < mockData.length; i += 3) {
-    //   chunks.push(mockData.slice(i, i + 3));
-    // }
-    // console.log(chunks);
     return mockData;
+  }
+
+  public onSaunaHover(sauna: any) {
+    this.activeSauna.set(sauna.id);
+  }
+
+  public onSaunaLeave() {
+    this.activeSauna.set(null);
   }
 
   public onSaunaClick(sauna: any) {
