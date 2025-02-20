@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { heroStar } from '@ng-icons/heroicons/outline';
 
@@ -15,16 +15,16 @@ import { heroStar } from '@ng-icons/heroicons/outline';
 export class RatingComponent {
   icon = 'heroStar';
 
-  @Input() rating = 4.5;
+  rating = input<number>(4.5);
 
   getStars() {
-    return Array(Math.floor(this.rating))
+    return Array(Math.floor(this.rating()))
       .fill(0)
       .map((_, index) => index + 1);
   }
 
   getHalfStars() {
-    return Array(Math.ceil(this.rating) - Math.floor(this.rating))
+    return Array(Math.ceil(this.rating()) - Math.floor(this.rating()))
       .fill(0)
       .map((_, index) => index + 1);
   }

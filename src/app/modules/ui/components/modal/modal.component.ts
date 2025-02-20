@@ -1,11 +1,10 @@
 import { NgTemplateOutlet } from '@angular/common';
 import {
   Component,
-  EventEmitter,
-  Input,
+  input,
   OnDestroy,
   OnInit,
-  Output,
+  output,
   TemplateRef,
 } from '@angular/core';
 import { ScrollService } from '../../services';
@@ -20,18 +19,18 @@ import { heroXMarkSolid } from '@ng-icons/heroicons/solid';
 export class ModalComponent implements OnInit, OnDestroy {
   constructor(private readonly scrollLockService: ScrollService) {}
 
-  @Input() isOpen = true;
-  @Input() contentTemplate: TemplateRef<any> | undefined;
-  @Output() onCloseModalEvent = new EventEmitter<boolean>();
+  isOpen = input<boolean>(true);
+  contentTemplate = input<TemplateRef<any>>();
+  onCloseModalEvent = output<boolean>();
 
   ngOnInit() {
-    if (this.isOpen) {
+    if (this.isOpen()) {
       this.scrollLockService.lockScroll();
     }
   }
 
   ngOnDestroy() {
-    if (this.isOpen) {
+    if (this.isOpen()) {
       this.scrollLockService.unlockScroll();
     }
   }
